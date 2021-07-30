@@ -1,0 +1,95 @@
+# conding=utf-8
+import getopt  # 获取参数
+import sys
+import math  # 向上取整 math.ceil()
+import threading
+import requests
+
+
+def banner():
+    print("*" * 51)
+    print("**" + " " * 16 + "文件爆破工具v1.0" + " " * 15 + "**")
+    print("**" + "  " + "工具使用说明:" + " " * 32 + "**")
+
+    print("**" + "  " + "python dir.py -u url -t thread -d dictionary" + " **")
+    print("*" * 51)
+
+
+banner()
+
+
+# 给每个线程分任务(字典中大列表分成小列表)
+def muti_scan(url, threads, dic):
+    with open(dic, "r") as f:
+        # 读取字典文件
+        dic_list = f.readlines()
+        # 确定每个线程读取的行数向上取整
+        thread_read_line_num = math.ceil(len(dic_list) / int(threads))
+        # 制作每一个线程读取的字典列表[[t1],[t2],[t3]]
+        i = 0
+        result_list = []
+        temp_list = []
+        for line in dic_list:
+            i = i + 1
+            # 每一次读取到取余为零就是一个新线程任务的开始
+            if i % thread_read_line_num == 0:
+                temp_list.append(line.strip())
+                result_list.append(temp_list)
+                temp_list = []
+            else:
+                temp_list.append(line.strip())
+    # print(result_list)
+
+    # 线程执行
+    threads_list = []
+    for i in result_list:
+        # 创建thread类
+        # 传入的参数是大列表result_list中的每一个小列表
+        threads_list.append(threading.Thread(target=scan, args=(url, i)))
+
+    # 所有线程运行
+    for t in threads_list:
+        t.start()
+
+
+# 线程代码：扫描实现 发送get请求查看状态码
+def scan(url, dic):
+    r = requests.get(url)
+    for line in dic:
+        r = requests.get(url + '/' + line)
+        # r = requests.get(url + line)
+        if r.status_code == 200:
+            # print(threading.currentThread())
+            print(r.url + " ： " + str(r.status_code))
+
+
+# 参数获取
+opts, args = getopt.getopt(sys.argv[1:], "u:t:d:")
+
+
+# print(type(opts))
+# print(opts)
+# print(type(args))
+# print(args)
+
+def start():
+    if len(sys.argv) == 7:
+        for k, v in opts:
+            if k == "-u":
+                url = v
+            elif k == "-t":
+                threads = v
+            elif k == "-d":
+                dic = v
+        # print("url: "+url)
+        # print("threads: "+threads)
+        # print("dic: "+dic)
+        muti_scan(url, threads, dic)
+    else:
+        print("传参错误")
+        sys.exit()
+
+
+start()
+
+

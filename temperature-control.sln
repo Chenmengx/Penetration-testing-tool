@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "temperature-control", "temperature-control\temperature-control.csproj", "{881979E9-24DA-4B0C-A7EE-634D9EE1FF71}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{2F9C74D9-26A4-4FDB-8FA4-239A5FC3CF51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{881979E9-24DA-4B0C-A7EE-634D9EE1FF71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{881979E9-24DA-4B0C-A7EE-634D9EE1FF71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{881979E9-24DA-4B0C-A7EE-634D9EE1FF71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{881979E9-24DA-4B0C-A7EE-634D9EE1FF71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F9C74D9-26A4-4FDB-8FA4-239A5FC3CF51}.Debug|Any CPU.ActiveCfg = Debug
+		{2F9C74D9-26A4-4FDB-8FA4-239A5FC3CF51}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A9BAC62-BCCF-46FD-BFE8-A8A49CA5BEA3}
+	EndGlobalSection
+EndGlobal
