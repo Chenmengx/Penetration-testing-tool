@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "C:\Users\CMX\Desktop\渗透工具\Side station\temperature-control\bin\Debug\ReIPDog-master\ToolBox\errordog.py", line 14, in inside
+    return func(Host, s)
+  File "C:\Users\CMX\Desktop\渗透工具\Side station\temperature-control\bin\Debug\ReIPDog-master\api\dns_aizhan_com.py", line 68, in search
+    print ('  [-]' + '\n  [-]'.join(Hosts))
+UnicodeEncodeError: 'gbk' codec can't encode character '\u2705' in position 109: illegal multibyte sequence
+
+--------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\CMX\Desktop\渗透工具\web fingerprint\temperature-control\bin\Debug\ReIPDog-master\ToolBox\errordog.py", line 14, in inside
+    return func(Host, s)
+  File "C:\Users\CMX\Desktop\渗透工具\web fingerprint\temperature-control\bin\Debug\ReIPDog-master\api\dns_aizhan_com.py", line 68, in search
+    print ('  [-]' + '\n  [-]'.join(Hosts))
+UnicodeEncodeError: 'gbk' codec can't encode character '\u2705' in position 109: illegal multibyte sequence
+
+--------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\CMX\Desktop\渗透工具\web fingerprint\temperature-control\bin\Debug\ReIPDog-master\ToolBox\errordog.py", line 14, in inside
+    return func(Host, s)
+  File "C:\Users\CMX\Desktop\渗透工具\web fingerprint\temperature-control\bin\Debug\ReIPDog-master\api\dns_aizhan_com.py", line 68, in search
+    print ('  [-]' + '\n  [-]'.join(Hosts))
+UnicodeEncodeError: 'gbk' codec can't encode character '\u2705' in position 109: illegal multibyte sequence
+
+--------------------------------------------------

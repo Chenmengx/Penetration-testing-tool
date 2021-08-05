@@ -1,55 +1,30 @@
-# conding=utf-8
-import getopt  # 获取参数
-import sys
-import math  # 向上取整 math.ceil()
-import threading
+#coding=utf-8
 import requests
+import json
+
+url = input("请输入要识别的url地址:").encode("gbk")
+
+def what_cms(url):
+    headers={
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+    post={
+        'hash':'0eca8914342fc63f5a2ef5246b7a3b14_7289fd8cf7f420f594ac165e475f1479',
+        'url':url,
+    }
+    r = requests.post(url='http://whatweb.bugscaner.com/what/', data=post, headers=headers)
+    # print(r)
+    # r=r.content.decode("utf-8")
+    print(r)
+    dic = json.loads(r.text)
+
+    if dic['cms']=='':
+        return u'未识别'
+    else:
+        return dic['cms']
 
 
-# 给每个线程分任务(字典中大列表分成小列表)
-def muti_scan(url, threads, dic):
-    with open(dic, "r") as f:
-        # 读取字典文件
-        dic_list = f.readlines()
-        # 确定每个线程读取的行数向上取整
-        thread_read_line_num = math.ceil(len(dic_list) / int(threads))
-        # 制作每一个线程读取的字典列表[[t1],[t2],[t3]]
-        i = 0
-        result_list = []
-        temp_list = []
-        for line in dic_list:
-            i = i + 1
-            # 每一次读取到取余为零就是一个新线程任务的开始
-            if i % thread_read_line_num == 0:
-                temp_list.append(line.strip())
-                result_list.append(temp_list)
-                temp_list = []
-            else:
-                temp_list.append(line.strip())
-    # print(result_list)
+# url=str("http://www.baidu.com", "utf-8").encode("gbk")
+# url = 'http://www.baidu.com'
+print(what_cms(url))
 
-    # 线程执行
-    threads_list = []
-    for i in result_list:
-        # 创建thread类
-        # 传入的参数是大列表result_list中的每一个小列表
-        threads_list.append(threading.Thread(target=scan, args=(url, i)))
-
-    # 所有线程运行
-    for t in threads_list:
-        t.start()
-
-
-# 线程代码：扫描实现 发送get请求查看状态码
-def scan(url, dic):
-    r = requests.get(url)
-    for line in dic:
-        r = requests.get(url + '/' + line)
-        # r = requests.get(url + line)
-        if r.status_code == 200:
-            # return str(r.url + " ： " + str(r.status_code))
-            # print(threading.currentThread())
-            print(r.url + " ： " + str(r.status_code))
-
-
-muti_scan(sys.argv[1], sys.argv[2], sys.argv[3])

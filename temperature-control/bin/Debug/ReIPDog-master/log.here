@@ -1,0 +1,110 @@
+
+Traceback (most recent call last):
+  File "D:\Anaconda\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\Anaconda\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "D:\Anaconda\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Anaconda\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "D:\Anaconda\lib\site-packages\urllib3\connectionpool.py", line 343, in _make_request
+    self._validate_conn(conn)
+  File "D:\Anaconda\lib\site-packages\urllib3\connectionpool.py", line 849, in _validate_conn
+    conn.connect()
+  File "D:\Anaconda\lib\site-packages\urllib3\connection.py", line 314, in connect
+    conn = self._new_conn()
+  File "D:\Anaconda\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001E473E81B38>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Anaconda\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "D:\Anaconda\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\Anaconda\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='dns.aizhan.com', port=443): Max retries exceeded with url: /baidu.com/ (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001E473E81B38>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\CMX\Desktop\ReIPDog-master\ToolBox\errordog.py", line 14, in inside
+    return func(Host, s)
+  File "C:\Users\CMX\Desktop\ReIPDog-master\api\dns_aizhan_com.py", line 47, in search
+    html = requests.get(api+Host+'/').text
+  File "D:\Anaconda\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\Anaconda\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Anaconda\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Anaconda\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Anaconda\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='dns.aizhan.com', port=443): Max retries exceeded with url: /baidu.com/ (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001E473E81B38>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。'))
+
+--------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\CMX\Desktop\ReIPDog-master\ToolBox\errordog.py", line 14, in inside
+    return func(Host, s)
+  File "C:\Users\CMX\Desktop\ReIPDog-master\api\bing_com.py", line 47, in search
+    _, data = getXML(url)
+  File "C:\Users\CMX\Desktop\ReIPDog-master\api\bing_com.py", line 31, in getXML
+    title, url = getXMLData(xmlstring)
+  File "C:\Users\CMX\Desktop\ReIPDog-master\api\bing_com.py", line 13, in getXMLData
+    ret = parseString(xmlstring)
+  File "D:\Anaconda\lib\xml\dom\minidom.py", line 1968, in parseString
+    return expatbuilder.parseString(string)
+  File "D:\Anaconda\lib\xml\dom\expatbuilder.py", line 925, in parseString
+    return builder.parseString(string)
+  File "D:\Anaconda\lib\xml\dom\expatbuilder.py", line 223, in parseString
+    parser.Parse(string, True)
+xml.parsers.expat.ExpatError: not well-formed (invalid token): line 40, column 38
+
+--------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\CMX\Desktop\ReIPDog-master\ToolBox\errordog.py", line 14, in inside
+    return func(Host, s)
+  File "C:\Users\CMX\Desktop\ReIPDog-master\api\bing_com.py", line 47, in search
+    _, data = getXML(url)
+  File "C:\Users\CMX\Desktop\ReIPDog-master\api\bing_com.py", line 31, in getXML
+    title, url = getXMLData(xmlstring)
+  File "C:\Users\CMX\Desktop\ReIPDog-master\api\bing_com.py", line 13, in getXMLData
+    ret = parseString(xmlstring)
+  File "D:\Anaconda\lib\xml\dom\minidom.py", line 1968, in parseString
+    return expatbuilder.parseString(string)
+  File "D:\Anaconda\lib\xml\dom\expatbuilder.py", line 925, in parseString
+    return builder.parseString(string)
+  File "D:\Anaconda\lib\xml\dom\expatbuilder.py", line 223, in parseString
+    parser.Parse(string, True)
+xml.parsers.expat.ExpatError: no element found: line 1, column 0
+
+--------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\CMX\Desktop\ReIPDog-master\ToolBox\errordog.py", line 14, in inside
+    return func(Host, s)
+  File "C:\Users\CMX\Desktop\ReIPDog-master\api\bing_com.py", line 47, in search
+    _, data = getXML(url)
+  File "C:\Users\CMX\Desktop\ReIPDog-master\api\bing_com.py", line 31, in getXML
+    title, url = getXMLData(xmlstring)
+  File "C:\Users\CMX\Desktop\ReIPDog-master\api\bing_com.py", line 13, in getXMLData
+    ret = parseString(xmlstring)
+  File "D:\Anaconda\lib\xml\dom\minidom.py", line 1968, in parseString
+    return expatbuilder.parseString(string)
+  File "D:\Anaconda\lib\xml\dom\expatbuilder.py", line 925, in parseString
+    return builder.parseString(string)
+  File "D:\Anaconda\lib\xml\dom\expatbuilder.py", line 223, in parseString
+    parser.Parse(string, True)
+xml.parsers.expat.ExpatError: no element found: line 1, column 0
+
+--------------------------------------------------

